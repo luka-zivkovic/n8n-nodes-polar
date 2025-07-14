@@ -293,7 +293,7 @@ export class PolarTrigger implements INodeType {
 			// Validate signature
 			const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
 			
-			const isValid = validateStandardWebhookSignature(
+			const isValid = await validateStandardWebhookSignature(
 				rawBody,
 				webhookId,
 				webhookTimestamp,

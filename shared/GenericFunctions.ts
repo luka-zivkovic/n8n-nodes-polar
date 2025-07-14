@@ -9,8 +9,6 @@ import {
     NodeApiError,
 } from 'n8n-workflow';
 
-import { createHmac } from 'crypto';
-
 export async function polarApiRequest(
     this: IExecuteFunctions | ILoadOptionsFunctions | IHookFunctions | IWebhookFunctions,
     method: IHttpRequestMethods,
@@ -90,26 +88,30 @@ export async function polarApiRequestAllItems(
 
 // Standard Webhooks signature validation for Polar.sh
 // Based on Standard Webhooks spec and Polar.sh documentation
-export function validateStandardWebhookSignature(
+export async function validateStandardWebhookSignature(
     payload: string,
     webhookId: string,
     webhookTimestamp: string,
     webhookSignature: string,
     secret: string,
-): boolean {
+): Promise<boolean> {
     try {
         // According to Polar.sh docs: "Secret needs to be base64 encoded"
         // The user's secret (e.g., 'test') needs to be base64 encoded before use
         const base64Secret = Buffer.from(secret, 'utf8').toString('base64');
         const secretBytes = Buffer.from(base64Secret, 'base64');
-        
         // Standard Webhooks signed payload format: webhook-id.webhook-timestamp.payload
         const signedPayload = `${webhookId}.${webhookTimestamp}.${payload}`;
+        const key = await crypto.subtle.importKey(
+            'raw',
+            secretBytes,
+            { name: 'HMAC', hash: 'SHA-256' },
+            false,
+            ['sign']
+        );
         
-        // Calculate expected signature using HMAC-SHA256
-        const expectedSignature = createHmac('sha256', secretBytes)
-            .update(signedPayload, 'utf8')
-            .digest('base64');
+        const signature = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(signedPayload));
+        const expectedSignature = Buffer.from(signature).toString('base64');
         
         // Standard Webhooks signature header format: "v1,base64_signature"
         // Parse multiple signatures if present (space-separated)
