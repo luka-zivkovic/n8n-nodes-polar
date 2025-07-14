@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-polar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "n8n community node for Polar.sh - Modern payment infrastructure for SaaS and digital products",
   "keywords": [
     "n8n-community-node-package",
