@@ -1,0 +1,28 @@
+{
+    "node": "n8n-nodes-polar.polarTrigger",
+    "nodeVersion": "1.0",
+    "codexVersion": "1.0",
+    "categories": [
+        "Finance & Accounting",
+        "Sales",
+        "Business Operations"
+    ],
+    "resources": {
+        "credentialDocumentation": [
+            {
+                "url": "https://docs.polar.sh/integrate/authentication"
+            }
+        ],
+        "primaryDocumentation": [
+            {
+                "url": "https://docs.polar.sh/integrate/webhooks"
+            }
+        ]
+    },
+    "alias": ["Payment", "Webhook", "Trigger", "Event", "Subscription", "Billing"],
+    "subcategories": {
+        "Finance & Accounting": ["Payments"],
+        "Sales": ["CRM"],
+        "Business Operations": ["Subscriptions"]
+    }
+} 

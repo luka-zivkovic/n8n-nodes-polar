@@ -1,0 +1,62 @@
+{
+  "name": "n8n-nodes-polar",
+  "version": "1.0.0",
+  "description": "n8n community node for Polar.sh - Modern payment infrastructure for SaaS and digital products",
+  "keywords": [
+    "n8n-community-node-package",
+    "polar",
+    "payments",
+    "saas",
+    "subscriptions",
+    "billing",
+    "checkout",
+    "ecommerce"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/luka-zivkovic/n8n-nodes-polar",
+  "author": {
+    "name": "Luka Zivkovic",
+    "email": "lukazivkovic58@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luka-zivkovic/n8n-nodes-polar.git"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "npx rimraf dist && tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/PolarApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Polar/Polar.node.js",
+      "dist/nodes/PolarTrigger/PolarTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "@typescript-eslint/parser": "~8.32.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "gulp": "^5.0.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

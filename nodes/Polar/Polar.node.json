@@ -1,0 +1,28 @@
+{
+    "node": "n8n-nodes-polar.polar",
+    "nodeVersion": "1.0",
+    "codexVersion": "1.0",
+    "categories": [
+        "Finance & Accounting",
+        "Sales",
+        "Business Operations"
+    ],
+    "resources": {
+        "credentialDocumentation": [
+            {
+                "url": "https://docs.polar.sh/integrate/authentication"
+            }
+        ],
+        "primaryDocumentation": [
+            {
+                "url": "https://docs.polar.sh/"
+            }
+        ]
+    },
+    "alias": ["Payment", "Subscription", "SaaS", "Billing", "Checkout", "Ecommerce"],
+    "subcategories": {
+        "Finance & Accounting": ["Payments"],
+        "Sales": ["CRM"],
+        "Business Operations": ["Subscriptions"]
+    }
+} 
