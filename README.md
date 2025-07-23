@@ -2,7 +2,7 @@
 
 This is an n8n community node for [Polar.sh](https://polar.sh/) - a modern payment infrastructure platform for SaaS and digital products. Polar is an open-source alternative to Stripe, designed specifically for developers selling software.
 
-[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
+[n8n](https://n8n.partnerlinks.io/ds9podzjls6d) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
 ## Features
 
